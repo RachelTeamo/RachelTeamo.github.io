@@ -2374,25 +2374,40 @@ div.paginate-container li:nth-last-child(2) a:after {
   border: 1px solid var(--news-border);
   border-radius: 16px;
   box-shadow: var(--news-shadow);
-  padding: 12px 14px;
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 14px;
+  padding: 8px 14px;
+  display: block;
   position: relative;
   overflow: hidden;
+  font-size: 0.9em;
 }
 
-/* subtle left accent */
-.news-item::before{
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 12px;
-  bottom: 12px;
-  width: 3px;
-  border-radius: 999px;
-  background: linear-gradient(180deg, rgba(255,77,109,0.9), rgba(255,183,3,0.9), rgba(77,150,255,0.9));
-  opacity: 0.9;
+.news-item .news-date,
+.news-item .news-tag,
+.news-item .news-title {
+  display: inline;
+}
+
+.news-item .news-date {
+  color: #666;
+  font-weight: 500;
+}
+
+.news-item .news-tag {
+  margin: 0 6px;
+}
+
+.news-item .news-title {
+  color: var(--text-color);
+}
+
+.news-item .news-detail {
+  color: #888;
+  margin-left: 6px;
+}
+
+/* Remove left accent for single-line layout */
+.news-item::before {
+  display: none;
 }
 
 .news-meta{
@@ -2864,7 +2879,7 @@ html[data-theme="dark"] .theme-toggle .theme-icon::after{
 
 #publications .pub{
   margin: 0;
-  padding: 15px 16px;
+  padding: 15px 16px 16px 16px;
   border: 1px solid var(--ui-card-border);
   border-radius: 18px;
   background: var(--ui-card-bg);
@@ -2884,23 +2899,40 @@ html[data-theme="dark"] .theme-toggle .theme-icon::after{
 }
 
 #publications .pub-right{
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  grid-template-areas:
-    "title title"
-    "authors authors"
-    "tags venue";
-  align-items: center;
-  column-gap: 14px;
-  row-gap: 6px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
 #publications .pub-right > .title{
-  grid-area: title;
   margin: 0;
   color: var(--ui-text);
   font-size: 1.06rem;
   line-height: 1.35;
+}
+
+#publications .pub-right > .title sup {
+  vertical-align: super;
+  font-size: 0.7em;
+}
+
+#publications .pub-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: auto;
+  padding-bottom: 6px;
+  gap: 20px;
+}
+
+#publications .pub-bottom .place {
+  font-size: 0.9em;
+  color: #666;
+  text-align: right;
+}
+
+#publications .pub-bottom .tags {
+  font-size: 0.85em;
 }
 
 #publications .pub-right > .authors{
@@ -3199,4 +3231,55 @@ html[data-theme="dark"] .theme-toggle .theme-icon::after{
   #academicservices .reviewer-section{
     grid-template-columns: 1fr;
   }
+}
+
+.pub-toggle-group {
+  float: right;
+  margin-left: 15px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.pub-toggle-btn {
+  padding: 5px 14px;
+  font-size: 0.72em;
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+  color: #495057;
+  border: 1px solid #dee2e6;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  letter-spacing: 0.3px;
+}
+
+.pub-toggle-btn:first-child {
+  border-radius: 20px 0 0 20px;
+  border-right: none;
+}
+
+.pub-toggle-btn:last-child {
+  border-radius: 0 20px 20px 0;
+}
+
+.pub-toggle-btn:hover {
+  background: linear-gradient(180deg, #e9ecef 0%, #dee2e6 100%);
+}
+
+.pub-toggle-btn.selected {
+  background: linear-gradient(180deg, #4a7cff 0%, #1d4ed8 100%);
+  color: white;
+  border-color: #1d4ed8;
+  box-shadow: 0 2px 4px rgba(29, 78, 216, 0.25);
+}
+
+/* Fix sup tag display */
+sup {
+  vertical-align: super !important;
+  font-size: smaller !important;
+}
+
+/* Rotating globe animation */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
