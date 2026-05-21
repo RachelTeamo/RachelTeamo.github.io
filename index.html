@@ -406,6 +406,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <h3 style="margin:20px 0 10px; color:#1d4ed8; border-bottom:1px solid #dbeafe; padding-bottom:4px;">Conference</h3>
 
+        <!-- C8 - ICML 2026 -->
+        <div class="pub" data-selected="false">
+          <div class="pub-left">
+            <img class="intro-img frame" src="images/icml26.png" alt="paper preview">
+          </div>
+          <div class="pub-right">
+            <div class="title">[C8] B-Spar: Bayesian Sparse-Reward Modeling for RL-based Image Editing</div>
+            <div class="authors">
+              <font style="font-size: 11pt;">
+                Shusong Xu, Peiye Liu, Yongbin Liu, Bangjie Yin, <b><u>Tianyi Zheng</u></b>, Zhaomang Sun, Zhenyu Chen, Peng-Tao Jiang, Jian Zhang, Yuzhao Wang, Zhen Gu, Jinwei Chen, Bo Li
+              </font>
+            </div>
+            <div class="pub-bottom">
+              <span class="tags">[<a class="tag" href="#" target="_blank">Paper</a>]</span>
+              <span class="place">International Conference on Machine Learning (ICML) 2026</span>
+            </div>
+          </div>
+        </div>
+
         <!-- C1 - CVPR 2026 (latest) -->
         <div class="pub" data-selected="true">
           <div class="pub-left">
@@ -459,25 +478,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="pub-bottom">
               <span class="tags">[<a class="tag" href="https://underline.io/events/501/sessions/21536/lecture/139180-bidirectional-noise-injection-enhancing-diffusion-models-via-coordinated-input-output-perturbation?tab=abstract" target="_blank">Paper</a>]</span>
               <span class="place">AAAI Conference on Artificial Intelligence (AAAI) 2026 <span class="news-tag tag-oral">Oral</span></span>
-            </div>
-          </div>
-        </div>
-
-        <!-- C8 - ICML 2026 -->
-        <div class="pub" data-selected="false">
-          <div class="pub-left">
-            <img class="intro-img frame" src="images/icml26.png" alt="paper preview">
-          </div>
-          <div class="pub-right">
-            <div class="title">[C8] B-Spar: Bayesian Sparse-Reward Modeling for RL-based Image Editing</div>
-            <div class="authors">
-              <font style="font-size: 11pt;">
-                Shusong Xu, Peiye Liu, Yongbin Liu, Bangjie Yin, <b><u>Tianyi Zheng</u></b>, Zhaomang Sun, Zhenyu Chen, Peng-Tao Jiang, Jian Zhang, Yuzhao Wang, Zhen Gu, Jinwei Chen, Bo Li
-              </font>
-            </div>
-            <div class="pub-bottom">
-              <span class="tags">[<a class="tag" href="#" target="_blank">Paper</a>]</span>
-              <span class="place">International Conference on Machine Learning (ICML) 2026</span>
             </div>
           </div>
         </div>
@@ -746,13 +746,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           selectedBtn.classList.add('selected');
           fullBtn.classList.remove('selected');
 
-          // Show selected only
+          // Show selected only, renumber (newest = highest number)
           Object.keys(sections).forEach(section => {
             const items = sections[section].items;
+            const selectedItems = items.filter(pub => pub.getAttribute('data-selected') === 'true');
+            const total = selectedItems.length;
+            selectedItems.forEach((pub, idx) => {
+              pub.style.display = 'block';
+              const title = pub.querySelector('.title');
+              const origLabel = title.textContent.match(/^\[(C|J|P)\d+\]/);
+              if (origLabel) {
+                title.textContent = title.textContent.replace(origLabel[0], `[${origLabel[1]}${total - idx}]`);
+              }
+            });
+            // Hide non-selected
             items.forEach(pub => {
-              if (pub.getAttribute('data-selected') === 'true') {
-                pub.style.display = 'block';
-              } else {
+              if (pub.getAttribute('data-selected') !== 'true') {
                 pub.style.display = 'none';
               }
             });
@@ -761,11 +770,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           selectedBtn.classList.remove('selected');
           fullBtn.classList.add('selected');
 
-          // Show all
+          // Show all, renumber (newest = highest number)
           Object.keys(sections).forEach(section => {
             const items = sections[section].items;
-            items.forEach(pub => {
+            const total = items.length;
+            items.forEach((pub, idx) => {
               pub.style.display = 'block';
+              const title = pub.querySelector('.title');
+              const origLabel = title.textContent.match(/^\[(C|J|P)\d+\]/);
+              if (origLabel) {
+                title.textContent = title.textContent.replace(origLabel[0], `[${origLabel[1]}${total - idx}]`);
+              }
             });
           });
         }
