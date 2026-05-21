@@ -746,22 +746,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           selectedBtn.classList.add('selected');
           fullBtn.classList.remove('selected');
 
-          // Show selected only, renumber (newest = highest number)
+          // Show selected only
           Object.keys(sections).forEach(section => {
             const items = sections[section].items;
-            const selectedItems = items.filter(pub => pub.getAttribute('data-selected') === 'true');
-            const total = selectedItems.length;
-            selectedItems.forEach((pub, idx) => {
-              pub.style.display = 'block';
-              const title = pub.querySelector('.title');
-              const origLabel = title.textContent.match(/^\[(C|J|P)\d+\]/);
-              if (origLabel) {
-                title.textContent = title.textContent.replace(origLabel[0], `[${origLabel[1]}${total - idx}]`);
-              }
-            });
-            // Hide non-selected
             items.forEach(pub => {
-              if (pub.getAttribute('data-selected') !== 'true') {
+              if (pub.getAttribute('data-selected') === 'true') {
+                pub.style.display = 'block';
+              } else {
                 pub.style.display = 'none';
               }
             });
@@ -770,17 +761,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           selectedBtn.classList.remove('selected');
           fullBtn.classList.add('selected');
 
-          // Show all, renumber (newest = highest number)
+          // Show all
           Object.keys(sections).forEach(section => {
             const items = sections[section].items;
-            const total = items.length;
-            items.forEach((pub, idx) => {
+            items.forEach(pub => {
               pub.style.display = 'block';
-              const title = pub.querySelector('.title');
-              const origLabel = title.textContent.match(/^\[(C|J|P)\d+\]/);
-              if (origLabel) {
-                title.textContent = title.textContent.replace(origLabel[0], `[${origLabel[1]}${total - idx}]`);
-              }
             });
           });
         }
