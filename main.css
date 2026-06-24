@@ -3447,8 +3447,8 @@ html[data-theme="dark"] .collab-affil::before {
   border-radius: 12px;
   font-size: 0.8em;
   font-weight: 500;
-  color: #0c4a6e;
-  background: #38bdf8;
+  color: #1e40af;
+  background: #dbeafe;
 }
 
 .interest-tag::before {
@@ -3458,17 +3458,17 @@ html[data-theme="dark"] .collab-affil::before {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
   animation: shimmer 2.5s infinite;
 }
 
 html[data-theme="dark"] .interest-tag {
-  color: #e0f2fe;
-  background: #0c4a6e;
+  color: #dbeafe;
+  background: #1e3a8a;
 }
 
 html[data-theme="dark"] .interest-tag::before {
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
 }
 
 @media screen and (max-width: 600px) {
