@@ -1896,6 +1896,10 @@ div.paginate-container li:nth-last-child(2) a:after {
     object-position: center;
 }
 
+.pub-left > .intro-img.pub-preview-cover {
+    object-fit: cover;
+}
+
 .pub-right {
     float: right;
     width: -webkit-calc(60% - (30px / 2));
@@ -2373,6 +2377,36 @@ div.paginate-container li:nth-last-child(2) a:after {
   margin-top: 10px;
   display: grid;
   gap: 12px;
+  max-height: 126px;
+  padding-right: 8px;
+  overflow-y: scroll;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 116, 139, 0.55) transparent;
+}
+
+.news-feed::-webkit-scrollbar{
+  width: 8px;
+}
+
+.news-feed::-webkit-scrollbar-track{
+  background: transparent;
+}
+
+.news-feed::-webkit-scrollbar-thumb{
+  background: rgba(100, 116, 139, 0.45);
+  border-radius: 999px;
+}
+
+.news-feed::-webkit-scrollbar-thumb:hover{
+  background: rgba(71, 85, 105, 0.68);
+}
+
+.news-feed:focus-visible{
+  outline: 2px solid rgba(37, 99, 235, 0.45);
+  outline-offset: 4px;
+  border-radius: 14px;
 }
 
 .news-item{
