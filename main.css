@@ -833,6 +833,305 @@ pre>code {
     font-weight: 200
 }
 
+#profile-cover {
+    box-sizing: border-box;
+    height: auto;
+    max-width: 100%;
+    padding: 32px 20px;
+    background: var(--ui-page-bg);
+}
+
+#profile-namecard {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 340px minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    align-items: start;
+    column-gap: 28px;
+    row-gap: 16px;
+    top: auto;
+    width: 100%;
+    max-width: 1160px;
+    padding: 40px 40px 22px;
+    border: 1px solid var(--ui-card-border);
+    border-radius: 18px;
+    background: var(--ui-card-bg);
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+}
+
+#profile-namecard::after {
+    display: none;
+}
+
+#profile-namecard .profile-col {
+    float: none !important;
+    width: auto;
+    margin: 0;
+    text-align: left;
+}
+
+#profile-namecard #my-pic {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: end;
+    justify-self: center;
+    text-align: center;
+}
+
+#profile-namecard #my-contact {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    min-width: 0;
+    padding-left: 28px;
+    border-left: 1px solid var(--ui-card-border);
+}
+
+#profile-avatar {
+    box-sizing: border-box;
+    width: 172px;
+    height: 172px;
+    object-fit: cover;
+    border: 5px solid var(--ui-card-bg);
+    box-shadow: 0 0 0 1px var(--ui-card-border), 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+#profile-namecard #my-name {
+    font-size: 40px;
+    line-height: 1.15;
+    letter-spacing: -0.035em;
+    color: var(--ui-text);
+}
+
+#profile-namecard #my-title {
+    display: block;
+    margin-top: 8px;
+    color: var(--ui-muted);
+}
+
+.profile-role {
+    display: block;
+    color: var(--ui-link);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+#profile-namecard .profile-affiliation {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.55;
+}
+
+.profile-degree {
+    max-width: 340px;
+    margin: 16px auto 0;
+    color: var(--ui-muted);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+#profile-namecard .profile-affiliation > strong,
+#profile-namecard .profile-degree > strong {
+    display: block;
+    margin-bottom: 3px;
+    color: var(--ui-text);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#profile-namecard .profile-degree > strong {
+    margin-bottom: 6px;
+    font-size: 16px;
+}
+
+#profile-namecard .profile-affiliation > strong a {
+    color: var(--ui-text);
+}
+
+#profile-namecard .profile-affiliation > span a,
+#profile-namecard .profile-degree > a {
+    color: var(--ui-muted);
+}
+
+#profile-namecard .profile-degree > a {
+    display: block;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(12px, 4vw, 18px);
+    font-weight: 500;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+.profile-affiliation-logos {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 18px;
+}
+
+.profile-affiliation-logos > a {
+    display: block;
+    flex: 0 1 148px;
+    min-width: 0;
+}
+
+.profile-affiliation-logos img {
+    display: block;
+    width: 100%;
+    height: 48px;
+    object-fit: contain;
+}
+
+#bio .work-card--completed {
+    --completed-accent: #64748b;
+    --completed-bg: #f1f3f6;
+    --completed-text: #526175;
+}
+
+#bio .work-card--completed b a {
+    color: var(--completed-text);
+}
+
+html[data-theme="dark"] #bio .work-card--completed {
+    --completed-accent: #59677b;
+    --completed-bg: #202936;
+    --completed-text: #b1bdcd;
+}
+
+.profile-contact-details {
+    display: grid;
+    gap: 8px;
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px solid var(--ui-card-border);
+}
+
+#profile-namecard .profile-address,
+#profile-namecard #my-email {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ui-subtle);
+}
+
+#profile-namecard .profile-contact-details .fa {
+    flex: 0 0 14px;
+    text-align: center;
+}
+
+#profile-namecard #my-email a {
+    color: var(--ui-muted);
+}
+
+#profile-namecard .social-media {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+#profile-namecard .social-media .icon-button {
+    margin: 0 !important;
+}
+
+@media screen and (max-width: 960px) {
+    #profile-cover {
+        padding: 24px 15px;
+    }
+
+    #profile-namecard {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto;
+        padding: 26px 20px 22px;
+        row-gap: 18px;
+    }
+
+    #profile-namecard #my-pic {
+        grid-row: 1;
+        justify-self: center;
+    }
+
+    #profile-avatar {
+        width: 116px;
+        height: 116px;
+    }
+
+    #profile-namecard #my-contact {
+        grid-column: 1;
+        grid-row: 3;
+        padding: 20px 0 0;
+        border-left: 0;
+        border-top: 1px solid var(--ui-card-border);
+    }
+
+    #profile-namecard #my-name {
+        font-size: 32px;
+    }
+
+    #profile-namecard .social-media {
+        grid-column: 1;
+        grid-row: 2;
+        justify-content: center;
+    }
+}
+
+.organization-logos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 70px;
+    gap: 6px;
+    margin-right: 10px;
+}
+
+.organization-logos img {
+    display: block;
+    width: 70px;
+    height: 25px;
+    object-fit: contain;
+}
+
+.organization-logos--compact {
+    flex-basis: 52px;
+    margin-right: 8px;
+    gap: 4px;
+}
+
+.organization-logos--compact img {
+    width: 52px;
+    height: 20px;
+}
+
+.organization-logos img[src="logo/vivo.png"] {
+    width: 80px;
+    height: 32px;
+    object-fit: cover;
+}
+
+.organization-logos--compact img[src="logo/vivo.png"] {
+    width: 60px;
+    height: 28px;
+}
+
+#bio .work-experience,
+#bio .work-experience b,
+#bio .work-experience > div {
+    text-align: left;
+}
+
+#bio .work-experience b {
+    flex: 1;
+    min-width: 0;
+}
+
 #my-email {
     font-size: 16px;
     color: #292929;
@@ -3242,6 +3541,11 @@ html[data-theme="dark"] .tag-highlight::before{
 }
 
 /* News */
+#news .news-advisor {
+  color: var(--ui-link);
+  font: inherit;
+}
+
 .news{
   --news-bg: var(--ui-card-bg);
   --news-border: var(--ui-card-border);
