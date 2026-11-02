@@ -955,6 +955,14 @@ pre>code {
     color: var(--ui-muted);
 }
 
+#profile-namecard .profile-affiliation > span a {
+    display: inline-block;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
 #profile-namecard .profile-degree > a {
     display: block;
     font-family: Georgia, "Times New Roman", serif;
