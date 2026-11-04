@@ -1017,7 +1017,7 @@ html[data-theme="dark"] #bio .work-card--completed {
 }
 
 #profile-namecard .profile-address,
-#profile-namecard #my-email {
+#profile-namecard .profile-email {
     display: flex;
     align-items: baseline;
     gap: 10px;
@@ -1032,8 +1032,17 @@ html[data-theme="dark"] #bio .work-card--completed {
     text-align: center;
 }
 
-#profile-namecard #my-email a {
+#profile-namecard .profile-email a {
     color: var(--ui-muted);
+    white-space: nowrap;
+}
+
+.profile-email-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    min-width: 0;
+    font-weight: 400;
 }
 
 #profile-namecard .social-media {
